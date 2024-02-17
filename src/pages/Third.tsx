@@ -9,11 +9,17 @@ import {
 import { BUTTON } from "../components/Button/Button.styled";
 
 const Third = () => {
+   const fetchPosts =  () => {
+    fetch('https://dummyjson.com/posts/search?q=love')
+    .then(res => res.json())
+    .then(console.log);
+  }
+
   return (
     <>
       <CardsItem />
       <HeroButtons>
-        <BUTTON>Get posts</BUTTON>
+        <BUTTON onClick={fetchPosts}>Get posts</BUTTON>
       </HeroButtons>
     </>
   );
