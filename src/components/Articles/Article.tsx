@@ -1,23 +1,40 @@
-import React from "react";
-import { ArticleItem, ArticleItemContent, BookmarkedDiv, H3, HashtagContainer } from "./Articles.styled";
-import { Icon } from '../Icon/Icon'
-import * as assets from '../Icon/assets'
+import { useEffect, useState } from "react";
+import {
+  ArticleItem,
+  ArticleItemContent,
+  BookmarkedDiv,
+  H3,
+  HashtagContainer,
+} from "./Articles.styled";
+import { Icon } from "../Icon/Icon";
+
+type Posts = {
+  id: number;
+  title: string;
+  body: string
+};
 
 const Article = () => {
+  const [posts, setPosts] = useState<Posts[]>([]);
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/posts?limit=12&skip=10&select=title,userId,body")
+      .then((res) => res.json())
+      .then((data) => setPosts(data.posts));
+  }, []);
   return (
-    <ArticleItem>
-      <H3>How To Order Food ?</H3>
-      <BookmarkedDiv>
-        <HashtagContainer>
-          #history, #food
-        </HashtagContainer>
-        <Icon name="Star"/>
-      </BookmarkedDiv>
-      <ArticleItemContent>
-        It wasn't quite yet time to panic. There was still time to salvage the
-        situation...
-      </ArticleItemContent>
-    </ArticleItem>
+    <>
+      {posts.map((post) => (
+        <ArticleItem key={post.id}>
+          <H3>{post.title}</H3>
+          <BookmarkedDiv>
+            <HashtagContainer>#history, #food</HashtagContainer>
+            <Icon name="Star" />
+          </BookmarkedDiv>
+          <ArticleItemContent>{post.body}</ArticleItemContent>
+        </ArticleItem>
+      ))}
+    </>
   );
 };
 

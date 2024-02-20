@@ -11,7 +11,7 @@ export const ArticleItem = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   align-items: start;
   gap: 26px;
   filter: drop-shadow(5px 5px #c5c5c5);
@@ -22,14 +22,24 @@ export const H3 = styled.h3`
   font-size: 22px;
   font-family: "Poppins";
   text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
 `;
 
 export const ArticleItemContent = styled.p`
   font-size: 18px;
   font-weight: 400;
   font-family: "Poppins";
+  line-height: 1.4;
   text-align: justify;
-`;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  `;
 
 export const BookmarkedDiv = styled.div`
   height: 26px;

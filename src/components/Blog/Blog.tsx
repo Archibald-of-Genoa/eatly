@@ -2,9 +2,9 @@ import Article from "../Articles/Article";
 import { ContainerStyled } from "../Container";
 import { Header } from "../Header";
 import { H3 } from "../Heading";
-import { Recipes } from "../Recipes";
 import { Footer } from "../Footer";
 import { ArticlesContainer } from "./Blog.styled";
+import { Arrow } from "../Icon/assets";
 
 export function Blog() {
   return (
@@ -17,18 +17,11 @@ export function Blog() {
 
       <ArticlesContainer>
         <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
+        <Arrow/>
+
       </ArticlesContainer>
+
+
 
       <Footer />
     </ContainerStyled>
