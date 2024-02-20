@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   ArticleItem,
   ArticleItemContent,
@@ -7,21 +7,21 @@ import {
   HashtagContainer,
 } from "./Articles.styled";
 import { Icon } from "../Icon/Icon";
-
-type Posts = {
-  id: number;
-  title: string;
-  body: string
-};
-
+import { fetchPosts } from "../../store/slices/articleSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
 const Article = () => {
-  const [posts, setPosts] = useState<Posts[]>([]);
+  const dispatch = useAppDispatch();
+  const { posts, status, error } = useAppSelector((state) => state.articles);
 
   useEffect(() => {
-    fetch("https://dummyjson.com/posts?limit=12&skip=10&select=title,userId,body")
-      .then((res) => res.json())
-      .then((data) => setPosts(data.posts));
-  }, []);
+    if (status === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [status, dispatch]);
+
+  if (status === "loading") return <div>Loading...</div>;
+  if (status === "failed") return <div>Error: {error}</div>;
+
   return (
     <>
       {posts.map((post) => (
