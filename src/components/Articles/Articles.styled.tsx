@@ -1,6 +1,5 @@
-import styled from "styled-components";
-
-
+import styled, { css } from "styled-components";
+import arrow from "../../assets/Arrow.png"
 
 export const ArticleItem = styled.div`
   width: 350px;
@@ -26,7 +25,6 @@ export const H3 = styled.h3`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-
 `;
 
 export const ArticleItemContent = styled.p`
@@ -39,7 +37,7 @@ export const ArticleItemContent = styled.p`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  `;
+`;
 
 export const BookmarkedDiv = styled.div`
   height: 26px;
@@ -59,3 +57,27 @@ export const HashtagContainer = styled.div`
   align-items: center;
   color: #8d8d8d;
 `;
+
+
+interface ArrowProps {
+  direction: 'left' | 'right';
+  disabled?: boolean;
+}
+
+const ArrowImage = styled.img<{ direction: 'left' | 'right'; disabled?: boolean }>`
+  width: 46px;
+  height: 30px;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  ${({ direction }) =>
+    direction === 'left' &&
+    css`
+      transform: rotate(180deg);
+    `}
+  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
+  /* Дополнительно можно изменить фильтр для неактивного состояния, чтобы сделать изображение более тусклым или серым */
+  filter: ${({ disabled }) => (disabled ? 'grayscale(100%)' : 'none')};
+`;
+
+export const Arrow = ({ direction, disabled = false }: ArrowProps) => {
+  return <ArrowImage src={arrow} alt="Arrow" direction={direction} disabled={disabled} />;
+};
