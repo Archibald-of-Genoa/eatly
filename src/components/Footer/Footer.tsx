@@ -1,23 +1,39 @@
 import { Icon } from "../Icon/Icon";
 import { Logo } from "../Logo";
 import { MenuItem } from "../MenuItem";
-import { FooterBottom, FooterContainer, FooterCopyright, FooterMenu, FooterSocial, FooterSocialIcon, FooterStyled } from "./Footer.styled";
+import {
+  FooterBottom,
+  FooterContainer,
+  FooterCopyright,
+  FooterMenu,
+  FooterSocial,
+  FooterSocialIcon,
+  FooterStyled,
+} from "./Footer.styled";
 
-export function Footer () {
+export function Footer() {
   return (
     <FooterStyled>
       <FooterContainer>
         <Logo />
         <FooterMenu>
-          <MenuItem to="/about">About Us</MenuItem>
-          <MenuItem to="/contact">Contact</MenuItem>
+          <a
+            href="#faq"
+            style={{
+              color: "#606060",
+              fontSize: "18px",
+              fontWeight: "500",
+              textDecoration: "none",
+            }}
+          >
+            FAQ
+          </a>
+          <MenuItem to="/blog">Blog</MenuItem>
         </FooterMenu>
       </FooterContainer>
       <FooterContainer>
         <FooterBottom>
-          <FooterCopyright>
-            © 2023 EATLY All Rights Reserved.
-          </FooterCopyright>
+          <FooterCopyright>© 2023 EATLY All Rights Reserved.</FooterCopyright>
           <FooterSocial>
             <FooterSocialIcon href="#">
               <Icon name="Instagram" />

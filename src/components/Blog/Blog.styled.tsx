@@ -8,3 +8,12 @@ export const ArticlesContainer = styled.div`
 
 
 `
+
+export const ArrowsContainer = styled.div`
+     display: flex;
+     width: 170px;
+     justify-content: space-between;
+     align-items: center;
+
+
+`

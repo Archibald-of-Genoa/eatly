@@ -38,7 +38,7 @@ function FaqItem({
 
 export function Faq() {
   return (
-    <FaqStyled>
+    <FaqStyled id="faq">
       <FaqHeader textAlign="center">
         Frequently Asked<br />
         <span style={{color: '#6C5FBC'}}>Questions</span>
