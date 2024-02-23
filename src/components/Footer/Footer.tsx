@@ -9,8 +9,8 @@ export function Footer () {
       <FooterContainer>
         <Logo />
         <FooterMenu>
-          <MenuItem href="#/about">About Us</MenuItem>
-          <MenuItem href="#/contact">Contact</MenuItem>
+          <MenuItem to="/about">About Us</MenuItem>
+          <MenuItem to="/contact">Contact</MenuItem>
         </FooterMenu>
       </FooterContainer>
       <FooterContainer>

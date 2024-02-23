@@ -2,6 +2,7 @@ import { Logo } from "../Logo";
 import { MenuItem } from "../MenuItem";
 import { HeaderMenu, HeaderStyled } from "./Header.styled";
 import { Blog } from "../Blog/Blog"
+import { Link } from "react-router-dom";
 
 
 export function Header() {
@@ -9,8 +10,8 @@ export function Header() {
     <HeaderStyled>
       <Logo />
       <HeaderMenu>
-        <MenuItem href="#/recipes">Recipes</MenuItem>
-        <MenuItem href=" ">Blog</MenuItem>
+        <MenuItem to="/recipies">Recipes</MenuItem>
+        <MenuItem to="/blog">Blog</MenuItem>
       </HeaderMenu>
     </HeaderStyled>
   );
