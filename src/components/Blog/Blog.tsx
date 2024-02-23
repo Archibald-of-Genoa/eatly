@@ -20,9 +20,6 @@ export function Blog() {
         <Article />
         <Arrow direction="left"/>
 
-{/* Здесь может быть ваша пагинация */}
-
-{/* Правая стрелка (направлена вправо) */}
 <Arrow direction="right" />
       </ArticlesContainer>
 
