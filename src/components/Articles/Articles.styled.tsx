@@ -74,10 +74,9 @@ const ArrowImage = styled.img<{ direction: 'left' | 'right'; disabled?: boolean 
       transform: rotate(180deg);
     `}
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  /* Дополнительно можно изменить фильтр для неактивного состояния, чтобы сделать изображение более тусклым или серым */
   filter: ${({ disabled }) => (disabled ? 'grayscale(100%)' : 'none')};
 `;
 
-export const Arrow = ({ direction, disabled = false }: ArrowProps) => {
-  return <ArrowImage src={arrow} alt="Arrow" direction={direction} disabled={disabled} />;
+export const Arrow = ({ direction, disabled = false, onClick }: ArrowProps & { onClick?: () => void }) => {
+  return <ArrowImage src={arrow} alt="Arrow" direction={direction} disabled={disabled} onClick={!disabled ? onClick : undefined} />;
 };
