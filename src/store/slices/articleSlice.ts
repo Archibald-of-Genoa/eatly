@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export type Post = {
   id: number;
@@ -15,7 +15,6 @@ type ArticlesState = {
   postsPerPage: number;
 };
 
-
 const initialState: ArticlesState = {
   posts: [],
   status: "idle",
@@ -26,10 +25,10 @@ const initialState: ArticlesState = {
 };
 
 export const fetchPosts = createAsyncThunk<
-  { posts: Post[]; total: number; skip: number; limit: number }, 
+  { posts: Post[]; total: number; skip: number; limit: number },
   { skip: number; limit: number },
   {
-    rejectValue: string 
+    rejectValue: string;
   }
 >("articles/fetchPosts", async ({ skip, limit }, { rejectWithValue }) => {
   try {
@@ -45,7 +44,7 @@ export const fetchPosts = createAsyncThunk<
     if (error instanceof Error) {
       return rejectWithValue(error.message);
     }
-    return rejectWithValue('An unknown error occurred');
+    return rejectWithValue("An unknown error occurred");
   }
 });
 

@@ -3,10 +3,10 @@ import arrow from "../../assets/Arrow.png"
 
 export const ArticleItem = styled.div`
   width: 350px;
-  height: 233px;
+  /* height: 270px; */
   border-radius: 16px;
   background-color: #fff;
-  padding: 20px 26px 24px;
+  padding: 26px 19px 26px 18px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ export const ArticleItemContent = styled.p`
 
 export const BookmarkedDiv = styled.div`
   height: 26px;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +57,26 @@ export const HashtagContainer = styled.div`
   align-items: center;
   color: #8d8d8d;
 `;
+
+export const UserContainer = styled.div`
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+export const UserNameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding-left: 12px;
+  
+
+`
+
+
 
 
 interface ArrowProps {
