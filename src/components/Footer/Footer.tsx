@@ -18,6 +18,18 @@ export function Footer() {
         <Logo />
         <FooterMenu>
           <a
+            href="#recipes"
+            style={{
+              color: "#606060",
+              fontSize: "18px",
+              fontWeight: "500",
+              textDecoration: "none",
+            }}
+          >
+            Recipes
+          </a>
+          
+          <a
             href="#faq"
             style={{
               color: "#606060",

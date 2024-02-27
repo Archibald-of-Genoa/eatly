@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import arrow from "../../assets/Arrow.png"
+import arrow from "../../assets/Arrow.png";
 
 export const ArticleItem = styled.div`
   width: 350px;
@@ -39,64 +39,39 @@ export const ArticleItemContent = styled.p`
   overflow: hidden;
 `;
 
-export const BookmarkedDiv = styled.div`
-  height: 26px;
-  /* width: 100%; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #6c5fbc;
-`;
-
-export const HashtagContainer = styled.div`
-  font-size: 12px;
-  font-weight: 400;
-  font-family: "Poppins";
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #8d8d8d;
-`;
-
-export const UserContainer = styled.div`
-  width: 100%;
-  height: 45px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-export const UserNameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  width: 100%;
-  padding-left: 12px;
-  
-
-`
-
-
-
-
 interface ArrowProps {
-  direction: 'left' | 'right';
+  direction: "left" | "right";
   disabled?: boolean;
 }
 
-const ArrowImage = styled.img<{ direction: 'left' | 'right'; disabled?: boolean }>`
+const ArrowImage = styled.img<{
+  direction: "left" | "right";
+  disabled?: boolean;
+}>`
   width: 46px;
   height: 30px;
-  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   ${({ direction }) =>
-    direction === 'left' &&
+    direction === "left" &&
     css`
       transform: rotate(180deg);
     `}
-  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  filter: ${({ disabled }) => (disabled ? 'grayscale(100%)' : 'none')};
+  opacity: ${({ disabled }) => (disabled ? "0.5" : "1")};
+  filter: ${({ disabled }) => (disabled ? "grayscale(100%)" : "none")};
 `;
 
-export const Arrow = ({ direction, disabled = false, onClick }: ArrowProps & { onClick?: () => void }) => {
-  return <ArrowImage src={arrow} alt="Arrow" direction={direction} disabled={disabled} onClick={!disabled ? onClick : undefined} />;
+export const Arrow = ({
+  direction,
+  disabled = false,
+  onClick,
+}: ArrowProps & { onClick?: () => void }) => {
+  return (
+    <ArrowImage
+      src={arrow}
+      alt="Arrow"
+      direction={direction}
+      disabled={disabled}
+      onClick={!disabled ? onClick : undefined}
+    />
+  );
 };

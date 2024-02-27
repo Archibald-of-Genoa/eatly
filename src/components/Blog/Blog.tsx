@@ -44,21 +44,20 @@ export function Blog() {
 
         <ArticlesContainer>
           <Article />
-          <div className="arrowsContainer"></div>
         </ArticlesContainer>
-        <ArrowsContainer>
-          <Arrow
-            direction="left"
-            disabled={isPreviousDisabled}
-            onClick={handlePrevious}
-          />
-          <Arrow
-            direction="right"
-            disabled={isNextDisabled}
-            onClick={handleNext}
-          />
-        </ArrowsContainer>
       </ContainerStyled>
+      <ArrowsContainer>
+        <Arrow
+          direction="left"
+          disabled={isPreviousDisabled}
+          onClick={handlePrevious}
+        />
+        <Arrow
+          direction="right"
+          disabled={isNextDisabled}
+          onClick={handleNext}
+        />
+      </ArrowsContainer>
       <Footer />
     </>
   );
