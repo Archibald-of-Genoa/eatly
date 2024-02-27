@@ -1,40 +1,29 @@
-import { useEffect } from "react";
-import { ArticleItem, ArticleItemContent, H3 } from "./Articles.styled";
-import { fetchPosts } from "../../store/slices/articleSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
+import React from "react";
 import { Link } from "react-router-dom";
+import { ArticleItem, ArticleItemContent, H3 } from "./Articles.styled";
 import UserContainer from "../UserContainer/UserContainer";
 
-const Article = () => {
-  const dispatch = useAppDispatch();
-  const { posts, status, error } = useAppSelector((state) => state.articles);
-  const { postsPerPage } = useAppSelector((state) => state.articles);
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+};
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPosts({ skip: 0, limit: postsPerPage }));
-    }
-  }, [status, dispatch, postsPerPage]);
 
-  if (status === "loading") return <div>Loading...</div>;
-  if (status === "failed") return <div>Error: {error}</div>;
-
+const Article = ({ id, title, body }: Post) => {
   return (
     <>
-      {posts.map((post) => (
-        <Link
-          to="/OneArticle"
-          key={post.id}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <ArticleItem>
-            <H3>{post.title}</H3>
-            <UserContainer />
-
-            <ArticleItemContent>{post.body}</ArticleItemContent>
-          </ArticleItem>
-        </Link>
-      ))}
+      <Link
+        to={`/OneArticle`}
+        key={id}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ArticleItem>
+          <H3>{title}</H3>
+          <UserContainer />
+          <ArticleItemContent>{body}</ArticleItemContent>
+        </ArticleItem>
+      </Link>
     </>
   );
 };

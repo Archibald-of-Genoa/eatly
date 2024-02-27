@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Article from "../Articles/Article";
 import { ContainerStyled } from "../Container";
 import { Header } from "../Header";
@@ -6,31 +7,37 @@ import { Footer } from "../Footer";
 import { ArticlesContainer } from "./Blog.styled";
 import { Arrow } from "../Articles/Articles.styled";
 import { ArrowsContainer } from "../Blog/Blog.styled";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/redux";
-import { fetchPosts } from "../../store/slices/articleSlice";
+import { useFetchPostsQuery } from "../../services/postApi";
 
 export function Blog() {
-  const { currentPage, totalPosts, postsPerPage } = useAppSelector(
-    (state) => state.articles
-  );
-  const dispatch = useAppDispatch();
+  const [currentPage, setCurrentPage] = useState(0);
+  const postsPerPage = 12; 
+
+  const { data, error, isLoading } = useFetchPostsQuery({
+    skip: currentPage * postsPerPage,
+    limit: postsPerPage,
+  });
+
+  const totalPosts = data?.total || 0;
 
   const handleNext = () => {
     if ((currentPage + 1) * postsPerPage < totalPosts) {
-      const skip = (currentPage + 1) * postsPerPage;
-      dispatch(fetchPosts({ skip, limit: postsPerPage }));
+      setCurrentPage(currentPage + 1);
     }
   };
 
   const handlePrevious = () => {
     if (currentPage > 0) {
-      const skip = Math.max(0, (currentPage - 1) * postsPerPage);
-      dispatch(fetchPosts({ skip, limit: postsPerPage }));
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const isNextDisabled = (currentPage + 1) * postsPerPage >= totalPosts;
   const isPreviousDisabled = currentPage === 0;
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error occurred: {error.toString()}</div>;
+
   return (
     <>
       <ContainerStyled>
@@ -43,7 +50,9 @@ export function Blog() {
         </H3>
 
         <ArticlesContainer>
-          <Article />
+          {data?.posts.map((post) => (
+            <Article key={post.id} {...post} />
+          ))}
         </ArticlesContainer>
       </ContainerStyled>
       <ArrowsContainer>
