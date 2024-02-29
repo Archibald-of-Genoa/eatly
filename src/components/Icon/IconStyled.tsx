@@ -8,4 +8,5 @@ export const IconStyled = styled.span<Omit<Props, 'name'>>`
   justify-content: center;
   height: ${({ height = 20 }) => `${height}px`};
   width: ${({ width = 20 }) => `${width}px`};
+  transform: ${({ direction }) => direction === 'left' ? 'rotate(180deg)' : 'none'};
 `

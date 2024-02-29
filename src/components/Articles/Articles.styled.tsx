@@ -3,7 +3,6 @@ import arrow from "../../assets/Arrow.png";
 
 export const ArticleItem = styled.div`
   width: 350px;
-  /* height: 270px; */
   border-radius: 16px;
   background-color: #fff;
   padding: 26px 19px 26px 18px;

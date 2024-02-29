@@ -1,9 +1,10 @@
-import * as assets from './assets'
+import * as assets from "./assets";
 
-export type IconName = keyof typeof assets
+export type IconName = keyof typeof assets;
 
 export type Props = {
-  height?: number
-  name: IconName
-  width?: number
-}
+  height?: number;
+  name: IconName;
+  width?: number;
+  direction?: "left" | "right";
+};

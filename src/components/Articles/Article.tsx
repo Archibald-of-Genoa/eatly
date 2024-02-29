@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ArticleItem, ArticleItemContent, H3 } from "./Articles.styled";
 import UserContainer from "../UserContainer/UserContainer";

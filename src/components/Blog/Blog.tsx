@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Article from "../Articles/Article";
 import { ContainerStyled } from "../Container";
 import { Header } from "../Header";
