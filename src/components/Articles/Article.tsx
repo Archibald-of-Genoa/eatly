@@ -13,8 +13,7 @@ const Article = ({ id, title, body }: Post) => {
   return (
     <>
       <Link
-        to={`/OneArticle`}
-        key={id}
+        to={`/article/${id}`}
         style={{ textDecoration: "none", color: "inherit" }}
       >
         <ArticleItem>

@@ -10,7 +10,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/OneArticle" element={<OneArticle />} />
+        <Route path="/article/:id" element={<OneArticle />} />
         <Route path="/faq" element={<Faq />} />
       </Routes>
     </BrowserRouter>

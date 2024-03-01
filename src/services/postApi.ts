@@ -1,4 +1,3 @@
-import React from "react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 type Post = {
@@ -20,7 +19,10 @@ export const postsApi = createApi({
       query: ({ skip, limit }) =>
         `posts?limit=${limit}&skip=${skip}&select=title,userId,body`,
     }),
+    fetchPostById: builder.query<Post, number>({
+      query: (id) => `posts/${id}`,
+    }),
   }),
 });
 
-export const { useFetchPostsQuery } = postsApi;
+export const { useFetchPostsQuery, useFetchPostByIdQuery } = postsApi;

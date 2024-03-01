@@ -12,17 +12,21 @@ import {
   P,
 } from "./OneArticle.styled";
 import { BUTTON } from "../Button";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Icon } from "../Icon/Icon";
 
 import Comments from "../Comments/Comments";
-
-
+import { useFetchPostByIdQuery } from "../../services/postApi";
 
 const OneArticle = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data: article, error, isLoading } = useFetchPostByIdQuery(Number(id));
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error occurred: {error.toString()}</div>;
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  }
+  };
   return (
     <>
       <ContainerStyled>
@@ -30,15 +34,9 @@ const OneArticle = () => {
       </ContainerStyled>
 
       <ContainerStyled>
-        <H3>How To Order Food On eatly ?</H3>
+        <H3>{article?.title}</H3>
         <UserContainer />
-        <P>
-          It wasn't quite yet time to panic. There was still time to salvage the
-          situation. At least that is what she was telling himself. The reality
-          was that it was time to panic and there wasn't time to salvage the
-          situation, but he continued to delude himself into believing there
-          was.
-        </P>
+        <P>{article?.body}</P>
         <Link to="/blog">
           <BUTTON width="186px" height="59px" view="outlined">
             <Icon name="Arrow" direction="left" />
@@ -63,7 +61,6 @@ const OneArticle = () => {
             Send
           </BUTTON>
         </NewCommentForm>
-
       </ContainerStyled>
 
       <Footer />
