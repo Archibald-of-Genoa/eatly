@@ -35,7 +35,7 @@ const OneArticle = () => {
 
       <ContainerStyled>
         <H3>{article?.title}</H3>
-        <UserContainer />
+        <UserContainer userId={article!.userId as number} />
         <P>{article?.body}</P>
         <Link to="/blog">
           <BUTTON width="186px" height="59px" view="outlined">

@@ -4,11 +4,19 @@ type Post = {
   id: number;
   title: string;
   body: string;
+  userId: number;
 };
 
 type PostsResponse = {
   posts: Post[];
   total: number;
+};
+
+type User = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  image: string;
 };
 
 export const postsApi = createApi({
@@ -22,7 +30,10 @@ export const postsApi = createApi({
     fetchPostById: builder.query<Post, number>({
       query: (id) => `posts/${id}`,
     }),
+    fetchUserById: builder.query<User, number>({
+      query: (id) => `users/${id}`,
+    }),
   }),
 });
 
-export const { useFetchPostsQuery, useFetchPostByIdQuery } = postsApi;
+export const { useFetchPostsQuery, useFetchPostByIdQuery, useFetchUserByIdQuery  } = postsApi;

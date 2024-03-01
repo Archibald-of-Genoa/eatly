@@ -6,10 +6,11 @@ type Post = {
   id: number;
   title: string;
   body: string;
+  userId: number; 
 };
 
 
-const Article = ({ id, title, body }: Post) => {
+const Article = ({ id, title, body, userId }: Post) => {
   return (
     <>
       <Link
@@ -18,7 +19,7 @@ const Article = ({ id, title, body }: Post) => {
       >
         <ArticleItem>
           <H3>{title}</H3>
-          <UserContainer />
+          <UserContainer userId={userId} />
           <ArticleItemContent>{body}</ArticleItemContent>
         </ArticleItem>
       </Link>

@@ -6,28 +6,33 @@ import { BookmarkedDiv } from "./UserContainer.styled";
 import { Icon } from "../Icon/Icon";
 import { StyledUserContainer } from "./UserContainer.styled";
 
-const UserContainer = () => {
+import { useFetchUserByIdQuery } from "../../services/postApi";
+
+const UserContainer = ({ userId }: { userId: number }) => {
+  const { data: user, isLoading, error } = useFetchUserByIdQuery(userId);
+
+  if (isLoading) return <div>Loading user data...</div>;
+  if (error) return <div>Error loading user data</div>;
+
   return (
     <>
       <StyledUserContainer>
         <img
-          src={avatar}
-          style={{ display: "flex", flexBasis: "45px" }}
+          src={user?.image || avatar}
+          style={{ display: "flex", width: 45, height: 45 }}
           alt="User Avatar"
         ></img>
         <UserNameContainer>
           <HashtagContainer>Written By</HashtagContainer>
           <UserNameContainer style={{ fontWeight: 700, padding: 0 }}>
-            Terry Medhurst
+            {user?.firstName} {user?.lastName}
           </UserNameContainer>
         </UserNameContainer>
         <BookmarkedDiv>
           <Icon name="Star" />
         </BookmarkedDiv>
       </StyledUserContainer>
-      <HashtagContainer >
-        #history, #food
-      </HashtagContainer>
+      <HashtagContainer>#history, #food</HashtagContainer>
     </>
   );
 };
